@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.example.coding.images.presentation.common.model.DetailItemModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_16"
+            android:adjustViewBounds="true"
+            app:image="@{model.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".9"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{model.userName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:text="@tools:sample/first_names" />
+
+        <HorizontalScrollView
+            android:id="@+id/chips_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_name">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:chips="@{model.tags}"
+                app:singleLine="false">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:visibility="gone"
+                    tools:text="@tools:sample/first_names"
+                    tools:visibility="visible" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="user_name, chips_view, user_likes, downloads,comments"
+            app:flow_horizontalAlign="center"
+            app:flow_verticalGap="16dp"
+            app:flow_wrapMode="chain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/user_likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.likes}"
+            android:textAppearance="?textAppearanceSubtitle2"
+            tools:ignore="MissingConstraints"
+            tools:text="User Likes" />
+
+        <TextView
+            android:id="@+id/downloads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.downloads}"
+            android:textAppearance="?textAppearanceSubtitle2"
+            tools:ignore="MissingConstraints"
+            tools:text="@tools:sample/first_names" />
+
+        <TextView
+            android:id="@+id/comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.comments}"
+            android:textAppearance="?textAppearanceSubtitle2"
+            tools:ignore="MissingConstraints"
+            tools:text="@tools:sample/first_names" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

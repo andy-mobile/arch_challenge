@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_user_name">User Name %1$s</string>
+
+    <string name="detail_likes">Likes %1$d</string>
+    <string name="detail_download">Downloads %1$d</string>
+    <string name="detail_comments">Comments %1$d</string>
+</resources>
