@@ -58,6 +58,12 @@ class PreviewFragment : Fragment(R.layout.preview_fragment) {
             }
         }
 
+        lifecycleScope.launchWhenStarted {
+            viewModel.query.collectLatest { viewState ->
+                binding.model = viewState
+            }
+        }
+
         viewModel.collectEvent(viewLifecycleOwner) { event ->
             when (event) {
                 is OpenDetailScreen -> {
@@ -76,8 +82,8 @@ class PreviewFragment : Fragment(R.layout.preview_fragment) {
             addItemDecoration(GridSpacesItemDecoration(spacing = space, includeEdge = true))
         }
 
-        binding.inputTextView.doOnTextChanged { text, _, _, _ ->
-            viewModel.onTextChanged(text)
+        binding.inputTextView.doOnTextChanged { chars, _, _, _ ->
+            viewModel.onTextChanged(chars?.toString().orEmpty())
         }
 
         binding.inputLayout.setEndIconOnClickListener {}

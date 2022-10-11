@@ -6,7 +6,7 @@ import android.content.res.Resources
 import androidx.core.content.ContextCompat
 import java.io.File
 
-class ResourceProviderImpl constructor(
+internal class ResourceProviderImpl constructor(
     private val context: Context
 ) : ResourceProvider {
     override val packageName: String
