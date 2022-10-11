@@ -17,7 +17,7 @@ interface DispatchersProvider {
     val unconfined: CoroutineDispatcher
 }
 
-class DispatchersProviderImpl
+internal class DispatchersProviderImpl
 @Inject
 constructor() : DispatchersProvider {
     override val default: CoroutineDispatcher
